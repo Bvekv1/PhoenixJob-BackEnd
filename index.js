@@ -9,7 +9,8 @@ app.use(cors());
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({extended:true}));
 const userController = require('./controllers/userController');
-app.post('/registerEmployee',userController.register);
+const authValidatorController = require('./controllers/authValidatorController');
+app.post('/registerEmployee',authValidatorController.registerValidator,userController.register);
 app.post('/loginUser',userController.Login);
 app.listen('4000');
 console.log('Server is ready')
