@@ -28,7 +28,28 @@ function postJob(req,res,next) {
 
     
 }
+function displayJob(req,res,next) {
+    if(req.params.id === null){
+        res.status(500);
+        res.json({message: 'no data'})
+    }
+    job.job.findAll({
+        where:{
+            userId:req.userId
+        }
+    }).then(function (result) {
+        console.log(result);
+        if(result ===0){
+            res.json({message: 'no data'})
+        } else {
+            res.json(result);
+        }
+    }).catch(function (err) {
+        next(err);
+    })
+}
 
 module.exports ={
-    postJob
+    postJob,
+    displayJob
 }
