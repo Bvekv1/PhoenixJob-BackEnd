@@ -1,3 +1,4 @@
+var jwt = require('jsonwebtoken');
 var user = require('../model/user.js');
 function registerValidator(req,res,next) {
     user.user.findOne({
@@ -21,6 +22,24 @@ function registerValidator(req,res,next) {
     })
     
 }
+function verifyToken(req,res,next){
+    
+    if(req.headers.authorization === undefined){
+        res.json({status:401, message:"Unauthorized"})
+    }
+    console.log(req.headers.authorization);
+    //slice the bearer and space part out
+    var token = req.headers.authorization.slice(7,req.headers.authorization.length);
+    // console.log(token);
+    jwt.verify(token,'thisisSecretKey',function(err,result){
+        console.log(err);
+        console.log(result);
+        req.userId= result.id;
+        next()
+    })
+}
+
 module.exports ={
-    registerValidator
+    registerValidator,
+    verifyToken
 }
