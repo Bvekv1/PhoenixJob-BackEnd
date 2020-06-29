@@ -10,7 +10,7 @@ function postJob(req,res,next) {
         jobType:req.body.jobType,
         salary:req.body.salary,
         education:req.body.education,
-        location:req.body.location,
+        Location:req.body.location,
         applyBefore:req.body.applyBefore,
         jobDescription:req.body.jobDescription,
         jobQualification:req.body.jobQualification,
@@ -49,7 +49,22 @@ function displayJob(req,res,next) {
     })
 }
 
+function displayAllJob(req,res,next) {
+    job.job.findAll()
+    .then(function (result) {
+        console.log(result);
+        if(result === 0){
+            res.json({message: 'no data'})
+        } else {
+            res.json(result);
+        }
+    }).catch(function (err) {
+        next(err);
+    })
+}
+
 module.exports ={
     postJob,
-    displayJob
+    displayJob,
+    displayAllJob
 }
