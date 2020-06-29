@@ -10,7 +10,7 @@ function postJob(req,res,next) {
         jobType:req.body.jobType,
         salary:req.body.salary,
         education:req.body.education,
-        location:req.body.location,
+        Location:req.body.location,
         applyBefore:req.body.applyBefore,
         jobDescription:req.body.jobDescription,
         jobQualification:req.body.jobQualification,
