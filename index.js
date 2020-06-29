@@ -15,6 +15,7 @@ app.post('/registerEmployee',authValidatorController.registerValidator,userContr
 app.post('/loginUser',userController.Login);
 app.post('/postJob',authValidatorController.verifyToken,jobController.postJob);
 app.get('/displayJob',authValidatorController.verifyToken,jobController.displayJob);
+app.get('/displayAllJob',jobController.displayAllJob);
 app.listen('4000');
 console.log('Server is ready')
 module.exports =app;

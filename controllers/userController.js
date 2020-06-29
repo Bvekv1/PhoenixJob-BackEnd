@@ -39,6 +39,7 @@ function Login(req, res, next) {
         if (result === null) {
             res.status(404);
             res.json({
+                status: 404,
                 message: "Register First"
             })
         }
