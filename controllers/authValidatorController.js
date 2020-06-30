@@ -12,7 +12,7 @@ function registerValidator(req,res,next) {
         }
         else{
             console.log('Account already exist with this detail');
-            res.json({message: "Account already exist with this detail"});
+            res.json({status: 409, message: "Account already exist with this detail"});
         }
         
     }).
