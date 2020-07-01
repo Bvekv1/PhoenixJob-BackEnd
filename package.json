@@ -14,9 +14,13 @@
     "nodemon": "^2.0.4",
     "sequelize": "^5.21.13"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.0.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ||true",
     "start": "nodemon index.js"
   },
   "repository": {
