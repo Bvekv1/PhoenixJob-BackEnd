@@ -11,15 +11,15 @@ describe('User',function(){
 	describe('POST user registration in test',function(){
 
 		it('the user should be registered, unique email and password is provided',function(done){
-
+        //    User eamil need to be unique eachtime test is run
 		chai.request(server)
-			.post('/registration')
+			.post('/registerEmployee')
 			.set('content-type','application/x-www-form-urlencoded')
 			.send({
                 firstName:'Rohan',
                 lastName:'Sharma Kharel',
-                email:'rohan@gmail.com',
-                passWord:'rohan123',
+                email:'test1a@gmail.com',
+                password:'rohan123',
                 userType:'2',
                 companyName:'Job Portal',
                 organizationType:'Job Provider',
@@ -33,7 +33,7 @@ describe('User',function(){
 			})
 			.end(function(err,res){
 
-				res.body.should.have.property('status').eql('200')
+				res.body.should.have.status('200')
 				done();
 			})
 		})

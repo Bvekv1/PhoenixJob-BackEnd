@@ -8,20 +8,20 @@ var server = require('../index.js')
 
 describe('User',function(){
 
-	describe('POST user login in test',function(){
+	describe(' user login in test',function(){
 
 		it('the user should be login, unique email and password is provided',function(done){
 
 		chai.request(server)
-			.post('/login')
-			.set('content-type','application/x-www-form-urlencoded')
+			.post('/loginUser')
+			.set('content-type','application/json')
 			.send({
-                email:'rohan@gmail.com',
-				password:'rohan123'
+                email:'micro@gmail.com',
+				password:'bibek'
 			})
 			.end(function(err,res){
-
-				res.body.should.have.property('status').eql(200)
+                 //token = res.body.token;
+				res.body.should.have.status('200')
 				done();
 			})
 		})
