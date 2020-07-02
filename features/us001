@@ -1,0 +1,10 @@
+Feature: us001 opening homepage
+  Scenario: user viewing home page
+	Given 'homepage' is ready
+	When user hit the "url"
+	Then 'job list' is displayed
+  
+  Scenario: user not viewing home page
+	Given 'homepage' is not ready
+	When user hit the wrong "url"
+	Then 'job list' is not displayed

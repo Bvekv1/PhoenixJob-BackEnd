@@ -1,0 +1,13 @@
+Feature: us003 login page for company
+  
+  Scenario: Company logging into its account
+	
+	Given 'login form' is ready
+	When company provides valid 'username' and 'password'
+	Then redirected to company 'dashboard'
+  
+  Scenario: Company not logging into its account
+	
+	Given 'login form' is not ready
+	When company provides invalid 'username' and 'password'
+	Then company is not redirected to its 'dashboard'
