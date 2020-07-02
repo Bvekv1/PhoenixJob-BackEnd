@@ -1,0 +1,15 @@
+Feature: us004 Job posts by companies
+  
+  Scenario: Company try to post the job according to job role
+	
+	Given 'job form' is ready
+	When company provides valid 'information' of jobs
+	Then redirected to company 'dashboard'
+	And job is added to 'job list'
+  
+  Scenario: Company do not try to post the job according to job role
+	
+	Given 'job form' is not  ready
+	When company does not provide valid 'information' of jobs
+	Then not redirected to company 'dashboard'
+	And job is not added to 'job list'

@@ -1,0 +1,15 @@
+Feature: us002 account registration for companies
+  
+  Scenario: Company registering new account
+
+	Given 'registration form' is ready
+	When company provides valid 'information'
+	Then shown the successfully registered 'message'
+	And redirect to company 'dashboard'
+  
+  Scenario: Company not registering new account
+	
+	Given 'registration form' is not ready
+	When company does not provide valid 'information'
+	Then Do not show the successfully registered 'message'
+	And Not redirect to company 'dashboard'
