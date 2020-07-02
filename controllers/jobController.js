@@ -54,7 +54,9 @@ function displayAllJob(req,res,next) {
     .then(function (result) {
         console.log(result);
         if(result === 0){
-            res.json({message: 'no data'})
+            res.json({
+                status:'200',
+                message: 'no data'})
         } else {
             res.json(result);
         }
