@@ -31,43 +31,43 @@ var user = db.sequelize.define('user',{
     },
      companyName: {
         type:db.Sequelize.TEXT,
-        allowNull:false,
-        require:true
+        allowNull:true
+        
     },
      organizationType: {
         type:db.Sequelize.TEXT,
-        allowNull:false,
-        require:true
+        allowNull:true
+        
     },
      address: {
         type:db.Sequelize.TEXT,
-        allowNull:false,
-        require:true
+        allowNull:true
+        
     },
     country:{
         type:db.Sequelize.TEXT,
-        allowNull:false,
-        require:true
+        allowNull:true
+        
     },
      city: {
         type:db.Sequelize.TEXT,
-        allowNull:false,
-        require:true
+        allowNull:true
+        
     },
      phone: {
         type:db.Sequelize.TEXT,
-        allowNull:false,
-        require:true
+        allowNull:true
+        
     },
      website: {
         type:db.Sequelize.TEXT,
-        allowNull:false,
-        require:true
+        allowNull:true
+        
     },
     companyDescription:{
         type:db.Sequelize.TEXT,
-        allowNull:false,
-        require:true
+        allowNull:true
+        
     },
 },
 {

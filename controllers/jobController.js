@@ -50,7 +50,32 @@ function displayJob(req,res,next) {
 }
 
 function displayAllJob(req,res,next) {
-    job.job.findAll()
+    job.job.findAll({
+         attributes:['jobTitle','experience','level','positions','jobType','salary','education',
+         'Location','applyBefore','jobDescription','jobQualification','expected','jobHours','benefits'],
+    })
+    .then(function (result) {
+        console.log(result);
+        if(result === 0){
+            res.json({
+                status:'200',
+                message: 'no data'})
+        } else {
+            res.json(result);
+        }
+    }).catch(function (err) {
+        next(err);
+    })
+}
+function jobTitle(req,res,next) {
+    job.job.findAll({
+        where:{
+            
+            jobTitle:req.params.jobTitle
+        },
+         attributes:['jobTitle','experience','level','positions','jobType','salary','education',
+         'Location','applyBefore','jobDescription','jobQualification','expected','jobHours','benefits'],
+    })
     .then(function (result) {
         console.log(result);
         if(result === 0){
@@ -65,8 +90,12 @@ function displayAllJob(req,res,next) {
     })
 }
 
+
+
+
 module.exports ={
     postJob,
     displayJob,
-    displayAllJob
+    displayAllJob,
+    jobTitle
 }

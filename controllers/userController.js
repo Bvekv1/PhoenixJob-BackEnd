@@ -45,6 +45,7 @@ function Login(req, res, next) {
         }
         else {
             req.id = result.dataValues.id;
+            req.userType = result.dataValues.userType;
             bcrypt.compare(req.body.password, result.dataValues.password)
                 .then(function (isMatch) {
                     if (!isMatch) {
@@ -55,7 +56,8 @@ function Login(req, res, next) {
                     else {
                         console.log(req.id);
                         var payLoad = {
-                            id: req.id
+                            id: req.id,
+                            userType: req.userType
                         }
                         jwt.sign(payLoad, 'thisisSecretKey', function (err, resultToken) {
                             console.log(err)
