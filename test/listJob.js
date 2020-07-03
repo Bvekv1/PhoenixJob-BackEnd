@@ -1,20 +1,20 @@
 var chai = require('chai')
 var chaiHttp = require('chai-http');
-var should = chai.should()
+var should = chai.should();
+const request = require('supertest');
 
 chai.use(chaiHttp);
 
 var server = require('../index.js');
 const { assert } = require('chai');
 
-describe("/GET Job display", () => {
-  it("job display", (done) => {
-    chai
-      .request(server)
-      .get("/dispalyAllJob")
-      .end((err, res) => {
-        res.body.should.be.a("object");
-        done();
-      });
+
+describe('GET /user', function() {
+  it('responds with json', function(done) {
+    request(server)
+      .get('/displayAllJob')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200, done);
   });
 });
