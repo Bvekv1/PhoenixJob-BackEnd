@@ -35,6 +35,8 @@ function verifyToken(req,res,next){
         console.log(err);
         console.log(result);
         req.userId= result.id;
+        req.userType = result.userType;
+        
         next()
     })
 }
