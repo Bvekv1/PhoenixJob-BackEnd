@@ -1,5 +1,7 @@
 var job = require('../model/job.js');
 var user = require('../controllers/userController');
+var sequalize = require('sequelize');
+var op = sequalize.Op;
 
 function postJob(req,res,next) {
     job.job.create({
@@ -71,7 +73,9 @@ function jobTitle(req,res,next) {
     job.job.findAll({
         where:{
             
-            jobTitle:req.params.jobTitle
+            jobTitle:{
+                [op.like]: '%' + req.params.jobTitle + '%'
+            }
         },
          attributes:['jobTitle','experience','level','positions','jobType','salary','education',
          'Location','applyBefore','jobDescription','jobQualification','expected','jobHours','benefits'],
