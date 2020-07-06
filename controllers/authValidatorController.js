@@ -41,7 +41,25 @@ function verifyToken(req,res,next){
     })
 }
 
+function userVerify(req,res,next){
+    
+    if(req.headers.authorization === undefined){
+        res.json({status:401, message:"Unauthorized"})
+    }
+    console.log(req.headers.authorization);
+    //slice the bearer and space part out
+    var token = req.headers.authorization.slice(7,req.headers.authorization.length);
+    // console.log(token);
+    jwt.verify(token,'thisisSecretKey',function(err,result){
+        // console.log(err);
+        console.log(result);
+        
+        res.json({status:200, userId: result.id, userType:result.userType});
+    })
+}
+
 module.exports ={
     registerValidator,
-    verifyToken
+    verifyToken,
+    userVerify
 }
