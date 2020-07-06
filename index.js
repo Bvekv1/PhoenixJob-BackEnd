@@ -13,6 +13,7 @@ const authValidatorController = require('./controllers/authValidatorController')
 const jobController = require('./controllers/jobController.js');
 app.post('/registerEmployee',authValidatorController.registerValidator,userController.register);
 app.post('/loginUser',userController.Login);
+app.get('/usercheck',authValidatorController.userVerify);
 app.post('/postJob',authValidatorController.verifyToken,jobController.postJob);
 app.get('/displayJob',authValidatorController.verifyToken,jobController.displayJob);
 app.get('/displayAllJob',jobController.displayAllJob);
