@@ -16,8 +16,8 @@ describe('User',function(){
 			.post('/loginUser')
 			.set('content-type','application/json')
 			.send({
-                email:'micro@gmail.com',
-				password:'bibek'
+                email:'suwal@gmail.com',
+				password:'asdf'
 			})
 			.end(function(err,res){
                  //token = res.body.token;

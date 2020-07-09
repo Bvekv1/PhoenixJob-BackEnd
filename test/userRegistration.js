@@ -16,11 +16,11 @@ describe('User',function(){
 			.post('/registerEmployee')
 			.set('content-type','application/x-www-form-urlencoded')
 			.send({
-                firstName:'Rohan',
-                lastName:'Sharma Kharel',
-                email:'test1a@gmail.com',
-                password:'rohan123',
-                userType:'2',
+                firstName:'bikesh',
+                lastName:'suwal',
+                email:'suwal.bikesh1@gmail.com',
+                password:'suwalbikesh',
+                userType:'0',
                 companyName:'Job Portal',
                 organizationType:'Job Provider',
                 address:'ktm',
