@@ -119,6 +119,47 @@ function jobDetails(req,res,next) {
     })
 }
 
+function jobinfoUpdate(req, res, next){
+    job.job.update({
+        jobTitle:req.body.jobTitle,
+        experience:req.body.experience,
+        level:req.body.level,
+        positions:req.body.positions,
+        jobType:req.body.jobType,
+        salary:req.body.salary,
+        education:req.body.education,
+        Location:req.body.location,
+        applyBefore:req.body.applyBefore,
+        jobDescription:req.body.jobDescription,
+        jobQualification:req.body.jobQualification,
+        expected:req.body.expected,
+        jobHours:req.body.jobHours,
+        benefits:req.body.benefits,
+        
+    }, {
+        where: {
+            id: req.params.id
+        }
+
+    })
+
+    .then(function(result){
+        if(result === 1){
+            res.json({status:404, message:'Job not found for updating'})
+        }
+
+        else{
+            res.json({status:200, message:'Job info was successfully updated'})
+        }
+    })
+
+    .catch(function(err){
+        res.json({status:500, message:'There was error updating job info'})
+    })
+
+   
+}
+
 
 
 module.exports ={
@@ -126,5 +167,6 @@ module.exports ={
     displayJob,
     displayAllJob,
     jobTitle,
-    jobDetails
+    jobDetails,
+    jobinfoUpdate
 }
