@@ -94,6 +94,30 @@ function jobTitle(req,res,next) {
     })
 }
 
+function jobDetails(req,res,next) {
+    job.job.findAll({
+        where:{
+            
+            jobId:
+                req.params.jobId
+            
+        },
+         attributes:['jobTitle','experience','level','positions','jobType','salary','education',
+         'Location','applyBefore','jobDescription','jobQualification','expected','jobHours','benefits'],
+    })
+    .then(function (result) {
+        console.log(result);
+        if(result === 0){
+            res.json({
+                status:'200',
+                message: 'no data'})
+        } else {
+            res.json(result);
+        }
+    }).catch(function (err) {
+        next(err);
+    })
+}
 
 
 
@@ -101,5 +125,6 @@ module.exports ={
     postJob,
     displayJob,
     displayAllJob,
-    jobTitle
+    jobTitle,
+    jobDetails
 }

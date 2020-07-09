@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize('phoenixJob','root','6789',{host:'localhost',dialect:'mysql',logging:false});
+var sequelize = new Sequelize('phoenixJob','root','6295',{host:'localhost',dialect:'mysql',logging:false});
 sequelize.authenticate().then(
     function(){
         console.log('Database Connected')
