@@ -52,10 +52,7 @@ function displayJob(req,res,next) {
 }
 
 function displayAllJob(req,res,next) {
-    job.job.findAll({
-         attributes:['jobTitle','experience','level','positions','jobType','salary','education',
-         'Location','applyBefore','jobDescription','jobQualification','expected','jobHours','benefits'],
-    })
+    job.job.findAll()
     .then(function (result) {
         console.log(result);
         if(result === 0){
@@ -76,9 +73,7 @@ function jobTitle(req,res,next) {
             jobTitle:{
                 [op.like]: '%' + req.params.jobTitle + '%'
             }
-        },
-         attributes:['jobTitle','experience','level','positions','jobType','salary','education',
-         'Location','applyBefore','jobDescription','jobQualification','expected','jobHours','benefits'],
+        }
     })
     .then(function (result) {
         console.log(result);
