@@ -134,17 +134,17 @@ function jobinfoUpdate(req, res, next){
         jobQualification:req.body.jobQualification,
         expected:req.body.expected,
         jobHours:req.body.jobHours,
-        benefits:req.body.benefits,
+        benefits:req.body.benefits
         
     }, {
         where: {
-            id: req.params.id
+            jobId:req.params.id
         }
 
     })
 
     .then(function(result){
-        if(result === 1){
+        if (result === 1){
             res.json({status:404, message:'Job not found for updating'})
         }
 

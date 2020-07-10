@@ -20,7 +20,7 @@ app.get('/displayAllJob',jobController.displayAllJob);
 app.get('/searchJobByTitle/:jobTitle',jobController.jobTitle);
 app.get('/jobDetails/:jobId',authValidatorController.verifyToken,jobController.jobDetails);
 app.put('/userUpdate/:id', userController.userUpdate);
-app.put('/jobinfoUpdate/:id',authValidatorController.verifyToken, jobController.jobinfoUpdate);
+app.put('/jobinfoUpdate/:id',authValidatorController.verifyToken,jobController.jobinfoUpdate);
 app.get('/searchJob/:jobType', jobController.searchJob)
 app.listen('4000');
 console.log('Server is ready')
