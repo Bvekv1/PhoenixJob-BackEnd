@@ -154,32 +154,68 @@ describe("GET /jobDetails/:jobId", () => {
   /**
  * Test  the put route for user profile update
  */
-//  describe("Put /updateProfile/:id Edit",()=>{
-//     const id = 1;
-//     const user ={
-//       name: "update",
-//       email: "update@gamil.com",
-//       password:"update",
-//     companyName:"update",
-//     organizationType:"update",
-//     address:"update",
-//      country:"update",
-//      city:"update",
-//      phone:"9800684239",
-//      website:"update",
-//      companyDescription:"update"
+describe("Put /userUpdate/:id Edit",()=>{
+  it('post job',function(done){
 
-//     };
-//     request(server)
-//     .put("/updateProfile/"+id )
-//.set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkzNjE4Mzk5fQ.Rlsn2pHvL0NcfRyAK4XLHYr4-9EkawYPWxBi31jcGaA'})
-//     .send(user)
-//     .end((err,response)=>{
-//       response.should.have.status(200);
-//       done();
-//     });
-//  });
+    const id = 1;
+    const user ={
+      name: "updateUserName",
+      email: "updateUserEmail@gamil.com",
+      password:"updateEmail",
+    companyName:"updateCompanyName",
+    organizationType:"updateOrganizationType",
+    address:"updateAddress",
+     country:"updateCountry",
+     city:"updateCity",
+     phone:"update9868",
+     website:"updateWebSite",
+     companyDescription:"updateDescription"
 
+    };
+    request(server)
+    .put("/userUpdate/"+id )
+.set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkzNjE4Mzk5fQ.Rlsn2pHvL0NcfRyAK4XLHYr4-9EkawYPWxBi31jcGaA'})
+    .send(user)
+    .end((err,response)=>{
+      response.should.have.status(200);
+      done();
+    });
+ });
+  });
+
+  /**
+ * Test  the put route for job  update
+ */
+describe("Put /jobinfoUpdate/:id Edit job info",()=>{
+  it('update the job ',function(done){
+      const id = 1;
+      const user ={
+      jobTitle: "updateJobTitle",
+      experience: "updateJobInformation",
+      level:"updateJobLevel",
+      positions:"updateJobPositions",
+      jobType:"updateJobType",
+      salary:"updateSalary",  
+      education:"updateEducation",
+      location:"updateLocation",
+      applyBefore:"updateApplyBefore",
+      jobDescription:"updateJobDescription",
+      jobQualification:"updateJobQualification",
+      expected:"updateExpected",
+      jobHours:"updatejobHours",
+      benefits:"updateJobBenefits"
+
+      }; 
+    request(server)
+     .put("/jobinfoUpdate/"+id )
+.set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkzNjE4Mzk5fQ.Rlsn2pHvL0NcfRyAK4XLHYr4-9EkawYPWxBi31jcGaA'})
+      .send(user)
+      .end((err,response)=>{
+     response.should.have.status(200);     
+      done();
+    });
+  });
+});
  
 //  /** 
 //  * Test get route for job catgory for private
