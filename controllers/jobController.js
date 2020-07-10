@@ -160,6 +160,35 @@ function jobinfoUpdate(req, res, next){
    
 }
 
+function searchJob(req, res, next){
+    console.log(req.params.id)
+    if(req.params.jobType === null){
+        res.status(500);
+        res.json({status:500, message: 'Required Id is not provided'})
+    }
+
+    job.job.findOne({
+        where: {
+            jobType: req.params.jobType
+        }
+
+    })
+        .then(function(result){
+            if(result === 0){
+                result.json({message:"no data"})
+            }
+            else{
+                console.log(result)
+                res.send(result)
+            }
+        })
+
+        .catch(function(err){
+            next(err);
+        })
+    
+}
+
 
 
 module.exports ={
@@ -168,5 +197,6 @@ module.exports ={
     displayAllJob,
     jobTitle,
     jobDetails,
-    jobinfoUpdate
+    jobinfoUpdate,
+    searchJob
 }
