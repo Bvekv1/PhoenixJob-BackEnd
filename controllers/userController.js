@@ -73,7 +73,45 @@ function Login(req, res, next) {
         }
     })
 }
+
+function userUpdate(req, res, next){
+    User.user.update({
+        firstName:req.body.firstName,
+        lastName:req.body.lastName,
+        email:req.body.email,
+        password:req.body.password,
+        userType:req.body.userType,
+        companyName:req.body.companyName,
+        organizationType:req.body.organizationType,
+        address:req.body.address,
+        country:req.body.country,
+        city:req.body.city,
+        phone:req.body.phone,
+        website:req.body.website,
+        companyDescription:req.body.companyDescription
+
+    }, {
+        where: {
+            id: req.params.id
+        }
+    })
+
+    .then(function(result){
+        if (result === 1 ){
+            res.json({status: 404, message: 'User not found for update'})
+        }
+        else{
+            res.json({status: 200, message: 'User was successfully Updated'})
+        }
+    })
+    .catch(function(err){
+        res.json({status: 500, message: 'There was an error updating '})
+        
+    })
+
+}
 module.exports ={
     register,
-    Login
+    Login,
+    userUpdate
 }
