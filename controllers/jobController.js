@@ -96,9 +96,7 @@ function jobDetails(req,res,next) {
             jobId:
                 req.params.jobId
             
-        },
-         attributes:['jobTitle','experience','level','positions','jobType','salary','education',
-         'Location','applyBefore','jobDescription','jobQualification','expected','jobHours','benefits'],
+        }
     })
     .then(function (result) {
         console.log(result);
@@ -115,6 +113,9 @@ function jobDetails(req,res,next) {
 }
 
 function jobinfoUpdate(req, res, next){
+    // console.log(req.params.id)
+    let id = JSON.parse(req.params.id);
+    console.log(id);
     job.job.update({
         jobTitle:req.body.jobTitle,
         experience:req.body.experience,
@@ -133,13 +134,14 @@ function jobinfoUpdate(req, res, next){
         
     }, {
         where: {
-            jobId:req.params.id
+            jobId:id
         }
 
     })
 
     .then(function(result){
-        if (result === 1){
+        console.log(result);
+        if (result == []){
             res.json({status:404, message:'Job not found for updating'})
         }
 
@@ -162,7 +164,7 @@ function searchJob(req, res, next){
         res.json({status:500, message: 'Required Id is not provided'})
     }
 
-    job.job.findOne({
+    job.job.findAll({
         where: {
             jobType: req.params.jobType
         }
@@ -174,7 +176,7 @@ function searchJob(req, res, next){
             }
             else{
                 console.log(result)
-                res.send(result)
+                res.json(result)
             }
         })
 
