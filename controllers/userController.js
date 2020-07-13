@@ -110,8 +110,30 @@ function userUpdate(req, res, next){
     })
 
 }
+
+function getUser(req, res, next){
+    User.user.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+
+    .then(function(result){
+        if(result === null){
+            res.json({status: 404, message: 'User not found'})
+        }
+        else{
+            res.json(result)
+        }
+    })
+
+    .catch(function(err){
+        res.json({status: 500, message: 'Error while displaying user'})
+    })
+}
 module.exports ={
     register,
     Login,
-    userUpdate
+    userUpdate,
+    getUser
 }

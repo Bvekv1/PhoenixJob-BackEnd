@@ -18,8 +18,9 @@ app.post('/postJob',authValidatorController.verifyToken,jobController.postJob);
 app.get('/displayJob',authValidatorController.verifyToken,jobController.displayJob);
 app.get('/displayAllJob',jobController.displayAllJob);
 app.get('/searchJobByTitle/:jobTitle',jobController.jobTitle);
+app.put('/userUpdate/:id',authValidatorController.verifyToken, userController.userUpdate);
+app.get('/getUser/:id', authValidatorController.verifyToken, userController.getUser);
 app.get('/jobDetails/:jobId',jobController.jobDetails);
-app.put('/userUpdate/:id', userController.userUpdate);
 app.put('/jobinfoUpdate/:id',authValidatorController.verifyToken,jobController.jobinfoUpdate);
 app.get('/searchJob/:jobType', jobController.searchJob)
 app.listen('4000');
