@@ -174,7 +174,7 @@ function searchJob(req, res, next){
             }
             else{
                 console.log(result)
-                res.send(result)
+                res.json(result)
             }
         })
 
