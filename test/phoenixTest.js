@@ -266,3 +266,15 @@ const { response } = require('express');
 
 //     });
 // });
+/** Test the delete route for job applied application */
+// describe("Delete /api/v1/jobApplied/:jobApplicationId",()=>{
+//        it("It should delete an existing task",(done)=>{
+//            const jobId = 8;
+//            request(server)
+//            .delete("api/v1/jobApplied/" + jobApplicationId)
+//            .end((err,response)=>{
+//                response.should.have.status(200);
+//               done();
+//            });
+//        });
+// });
