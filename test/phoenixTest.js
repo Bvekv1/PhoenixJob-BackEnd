@@ -4,9 +4,10 @@ var should = chai.should()
 
 chai.use(chaiHttp);
 const request = require('supertest');
-const { assert } = require('chai');
+const { assert, use } = require('chai');
 
-var server = require('../index.js')
+var server = require('../index.js');
+const { response } = require('express');
 
 // describe('User',function(){
 
@@ -127,15 +128,15 @@ var server = require('../index.js')
  /**
   * test get route for search job by jobTitle
   */
-  describe('GET/ user', function(){
-    it('responds with json', function(done){
-        request(server)
-        .get('/searchJobByTitle/Android Developer')
-        .set('Accept', 'application/json')
-        .expect('Content-Type', /json/)
-        .expect(200, done);
-    });
-});
+//   describe('GET/ user', function(){
+//     it('responds with json', function(done){
+//         request(server)
+//         .get('/searchJobByTitle/Android Developer')
+//         .set('Accept', 'application/json')
+//         .expect('Content-Type', /json/)
+//         .expect(200, done);
+//     });
+// });
 
 
 // /** 
@@ -225,4 +226,43 @@ var server = require('../index.js')
 //   });
 // });
  
+/** Sprint 4 test */
+/** Test the delete route for job information */
 
+// describe("Delete /api/v1/job/:jobId",()=>{
+//     it("It should delete an existing task",(done)=>{
+//         const jobId = 8;
+//         request(server)
+//         .delete("api/v1/job/" + jobId)
+//         .end((err,response)=>{
+//             response.should.have.status(200);
+//             done();
+//         });
+//     });
+//     it("It should not delete a job that is not in the database",(done)=>{
+//         const jobId = 5000;
+//         request(server)
+//         .delete("/api/v1/job/" + jobId)
+//         .end((err,response) =>{
+//             response.should.have.status(404);
+//             response.text.should.be.eql("The job with provided id doesn`t exist.");
+//             done();
+//         });
+//     });
+// });
+
+/**Test the select route for job applied */
+// describe("Get /api/v1/apply/:id",() =>{
+//    it ("It should Get a job by job applied  by user id",(Done) =>{
+//         const id = 1;
+//         request(server)
+//         .get("api/v1/apply/"+id)
+//         .end((err,response) =>{
+//             response.should.have.status(200);
+//             response.body.should.be.a('Object');
+//             response.body.should.have.property('id').eql(1);
+//             done();
+//         });
+
+//     });
+// });
