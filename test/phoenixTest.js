@@ -278,3 +278,17 @@ const { response } = require('express');
 //            });
 //        });
 // });
+
+/**
+ * Test the post route for upload resume
+ */
+describe('upload',function() {
+it('resume file',function (done) {
+  request.post('/api/v1/resume')
+  .attach('pdf','cv/resume.pdf')
+  .end(function (err,res) {
+    res.should.have.status(200);
+    done();
+  });
+  });
+ });
