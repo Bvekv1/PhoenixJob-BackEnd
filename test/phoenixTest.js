@@ -228,28 +228,32 @@ const { response } = require('express');
  
 /** Sprint 4 test */
 /** Test the delete route for job information */
-
-// describe("Delete /api/v1/job/:jobId",()=>{
-//     it("It should delete an existing task",(done)=>{
-//         const jobId = 8;
-//         request(server)
-//         .delete("api/v1/job/" + jobId)
-//         .end((err,response)=>{
-//             response.should.have.status(200);
-//             done();
-//         });
-//     });
-//     it("It should not delete a job that is not in the database",(done)=>{
-//         const jobId = 5000;
-//         request(server)
-//         .delete("/api/v1/job/" + jobId)
-//         .end((err,response) =>{
-//             response.should.have.status(404);
-//             response.text.should.be.eql("The job with provided id doesn`t exist.");
-//             done();
-//         });
-//     });
-// });
+/**job delete test with job id that exist */
+describe("Delete /api/v1/job/:jobId",()=>{
+    it("It should delete an existing task",(done)=>{
+        const jobId = 8;
+        request(server)
+        .delete("/api/v1/job/" + jobId)
+        .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
+        .end((err,response)=>{
+            response.should.have.status(200);
+            response.body.should.have.property('message').equal('job is successfully delete');
+            done();
+        });
+    });
+    /**job delete test with job id which does not exist */
+    it("It should not delete a job that is not in the database",(done)=>{
+        const jobId = 5000;
+        request(server)
+        .delete("/api/v1/job/" + jobId)
+        .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
+        .end((err,response) =>{
+            response.should.have.status(404);
+            response.body.should.have.property('message').equal('The job with provided id doesn`t exist.');
+            done();
+        });
+    });
+});
 
 /**Test the select route for job applied */
 // describe("Get /api/v1/apply/:id",() =>{
@@ -282,13 +286,13 @@ const { response } = require('express');
 /**
  * Test the post route for upload resume
  */
-describe('upload',function() {
-it('resume file',function (done) {
-  request.post('/api/v1/resume')
-  .attach('pdf','cv/resume.pdf')
-  .end(function (err,res) {
-    res.should.have.status(200);
-    done();
-  });
-  });
- });
+// describe('upload',function() {
+// it('resume file',function (done) {
+//   request.post('/api/v1/resume')
+//   .attach('pdf','cv/resume.pdf')
+//   .end(function (err,res) {
+//     res.should.have.status(200);
+//     done();
+//   });
+//   });
+//  });

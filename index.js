@@ -29,6 +29,7 @@ app.get('/api/v1/job/searchJobByTitle/:jobTitle',jobController.jobTitle);
 app.get('/api/v1/job/searchJobByCategory/:jobType', jobController.searchJob);
 app.put('/api/v1/job/:id',authValidatorController.verifyToken,jobController.jobinfoUpdate);
 app.get('/api/v1/jobByUserId', authValidatorController.verifyToken, jobController.displayJob);
+app.delete('/api/v1/job/:jobId', authValidatorController.verifyToken, jobController.deleteJob);
 
 
 //port define **************************************************************************************
