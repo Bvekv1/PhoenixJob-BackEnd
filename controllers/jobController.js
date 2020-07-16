@@ -31,17 +31,14 @@ function postJob(req,res,next) {
     
 }
 function displayJob(req,res,next) {
-    if(req.params.id === null){
-        res.status(500);
-        res.json({message: 'no data'})
-    }
+    console.log(req.userId);
     job.job.findAll({
         where:{
             userId:req.userId
         }
     }).then(function (result) {
         console.log(result);
-        if(result ===0){
+        if(result === []){
             res.json({message: 'no data'})
         } else {
             res.json(result);
@@ -186,6 +183,42 @@ function searchJob(req, res, next){
     
 }
 
+function deleteJob (req,res,next){
+    if (req.params.jobId === null || undefined) {
+        res.status(500);
+        res.json({ status: 500, message: 'job id is not provided' })
+    }
+    else {
+        let jobId = JSON.parse(req.params.jobId);
+        console.log(jobId);
+        job.job.destroy({
+            where: {
+                jobId: jobId
+            }
+        })
+            .then(function (result) {
+                console.log(result);
+                if (result === 0) {
+                    res.status(404);
+                    res.json({
+                        status:404,
+                        message: "The job with provided id doesn`t exist."
+                    })
+                }
+                else {
+                    res.status(200);
+                    res.json({
+                        status: 200,
+                        message: "job is successfully delete"
+                    })
+                }
+            })
+            .catch(function (err) {
+                next(err);
+            })
+    }
+}
+
 
 
 module.exports ={
@@ -195,5 +228,6 @@ module.exports ={
     jobTitle,
     jobDetails,
     jobinfoUpdate,
-    searchJob
+    searchJob,
+    deleteJob
 }
