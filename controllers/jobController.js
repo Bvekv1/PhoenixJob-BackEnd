@@ -31,17 +31,14 @@ function postJob(req,res,next) {
     
 }
 function displayJob(req,res,next) {
-    if(req.params.id === null){
-        res.status(500);
-        res.json({message: 'no data'})
-    }
+    console.log(req.userId);
     job.job.findAll({
         where:{
             userId:req.userId
         }
     }).then(function (result) {
         console.log(result);
-        if(result ===0){
+        if(result === []){
             res.json({message: 'no data'})
         } else {
             res.json(result);
