@@ -267,7 +267,6 @@ describe("Delete /api/v1/job/:jobId",()=>{
 //             response.body.should.have.property('id').eql(1);
 //             done();
 //         });
-
 //     });
 // });
 /** Test the delete route for job applied application */
