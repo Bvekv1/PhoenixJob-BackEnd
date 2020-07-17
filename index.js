@@ -34,6 +34,7 @@ app.delete('/api/v1/job/:jobId', authValidatorController.verifyToken, jobControl
 
 //job Applied API **********************************************************************************
 app.post('/api/v1/jobApplied', authValidatorController.verifyToken,jobAppliedController.jobAppliedByUsers);
+app.get('/api/v1/jobApplied', authValidatorController.verifyToken,jobAppliedController.getAppliedJobsByUserId);
 
 
 //port define **************************************************************************************
