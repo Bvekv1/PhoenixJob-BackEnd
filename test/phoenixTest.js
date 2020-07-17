@@ -255,32 +255,23 @@ describe("Delete /api/v1/job/:jobId",()=>{
     });
 });
 
+
 /**Test the select route for job applied */
-// describe("Get /api/v1/apply/:id",() =>{
-//    it ("It should Get a job by job applied  by user id",(Done) =>{
-//         const id = 1;
-//         request(server)
-//         .get("api/v1/apply/"+id)
-//         .end((err,response) =>{
-//             response.should.have.status(200);
-//             response.body.should.be.a('Object');
-//             response.body.should.have.property('id').eql(1);
-//             done();
-//         });
-//     });
-// });
-/** Test the delete route for job applied application */
-// describe("Delete /api/v1/jobApplied/:jobApplicationId",()=>{
-//        it("It should delete an existing task",(done)=>{
-//            const jobId = 8;
-//            request(server)
-//            .delete("api/v1/jobApplied/" + jobApplicationId)
-//            .end((err,response)=>{
-//                response.should.have.status(200);
-//               done();
-//            });
-//        });
-// });
+describe("Get /api/v1/apply/",() =>{
+   it ("It should Get a job by job applied  by user id",(done) =>{
+        
+        request(server)
+        .get("/api/v1/JobApplied")
+       .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
+        .end((err,response) =>{
+            response.should.have.status(200);
+            
+            done();
+        });
+    });
+});
+
+
 
 /**
  * Test the post route for upload resume
@@ -294,4 +285,53 @@ describe("Delete /api/v1/job/:jobId",()=>{
 //     done();
 //   });
 //   });
-//  });
+
+/** Test the delete route for job applied application */
+ describe("Delete /api/v1/job/:jobId",()=>{
+        it("It should delete an existing jobApplication",(done)=>{
+            const jobId = 2;
+            request(server)
+            .delete("/api/v1/jobApplied/" + jobId)
+            .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
+           .end((err,response)=>{
+                response.should.have.status(200);
+                response.body.should.have.property('message').equal('applied job successfully deleted');
+               done();
+            });
+        });
+        /**test the delete for if the job id doesn`t exist */
+      it("It should not delete a job application that is not in the database",(done)=>{
+          const jobId = 25;
+          request(server)
+          .delete("/api/v1/jobApplied/" + jobId)
+          .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
+          .end((err,response) =>{
+              response.should.have.status(404);
+              response.body.should.have.property('message').equal('applied job is failed to delete');
+              done();
+          });
+      });
+  });
+
+  describe('POST applied job registration in test',function(){
+
+     		it('test the jobapplied route for job aplication',function(done){
+             
+     		chai.request(server)
+                 .post('/api/v1/jobApplied')
+                 .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
+     			.set('content-type','application/x-www-form-urlencoded')
+     			.send({
+                     jobId:'8',
+                     
+                    
+     			})
+     			.end((err,res) =>{
+    
+              res.body.should.have.status('200')
+              
+     				done();
+     			})
+     		})
+     	})
+     
