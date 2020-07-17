@@ -62,8 +62,39 @@ function getAppliedJobsByUserId(req, res, next){
     }
 }
 
+function deleteAppliedJob(req,res,next){
+    if(req.params.jobId == null || req.params.jobId == undefined){
+        res.status(404);
+        res.json({status:'404',message:'Please provide job Id'});
+    }
+    else{
+        jobAppliedModel.jobApplied.destroy({
+            where : {
+            userId : req.userId,
+            jobJobId : req.params.jobId
+        }
+        })
+        .then(function(result){
+            console.log(result);
+            if(result == 0){
+                res.status(404);
+                res.json({status:404, message: 'applied job is failed to delete'});
+            }
+            else{
+                res.status(200);
+                res.json({status : 200, message:'applied job successfully deleted'})
+            }
+        })
+        .catch(function(err){
+            console.log(err);
+        })
+    }
+}
+
+
 
 module.exports = {
     jobAppliedByUsers,
-    getAppliedJobsByUserId
+    getAppliedJobsByUserId,
+    deleteAppliedJob
 }
