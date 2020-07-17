@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 const userController = require('./controllers/userController');
 const authValidatorController = require('./controllers/authValidatorController');
 const jobController = require('./controllers/jobController.js');
+const jobAppliedController = require('./controllers/jobAppliedController');
 
 // authentication API |*****************************************************************************
 app.post('/api/v1/users',authValidatorController.registerValidator,userController.register);
@@ -30,6 +31,9 @@ app.get('/api/v1/job/searchJobByCategory/:jobType', jobController.searchJob);
 app.put('/api/v1/job/:id',authValidatorController.verifyToken,jobController.jobinfoUpdate);
 app.get('/api/v1/jobByUserId', authValidatorController.verifyToken, jobController.displayJob);
 app.delete('/api/v1/job/:jobId', authValidatorController.verifyToken, jobController.deleteJob);
+
+//job Applied API **********************************************************************************
+app.post('/api/v1/jobApplied', authValidatorController.verifyToken,jobAppliedController.jobAppliedByUsers);
 
 
 //port define **************************************************************************************
