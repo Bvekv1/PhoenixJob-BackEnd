@@ -263,7 +263,8 @@ const { response } = require('express');
 //         request(server)
 //         .get("/api/v1/JobApplied")
 //        .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
-//         .end((err,response) =>{
+       
+//        .end((err,response) =>{
 //             response.should.have.status(200);
             
 //             done();
@@ -313,27 +314,26 @@ const { response } = require('express');
 //       });
 //   });
 
-//   describe('POST applied job registration in test',function(){
+  describe('POST applied job registration in test',function(){
 
-//      		it('test the jobapplied route for job aplication',function(done){
+     		it('test the jobapplied route for job aplication',function(done){
              
-//      		chai.request(server)
-//                  .post('/api/v1/jobApplied')
-//                  .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
-//      			.set('content-type','application/x-www-form-urlencoded')
-//      			.send({
-//                      jobId:'8',
-                     
-                    
-//      			})
-//      			.end((err,res) =>{
+     		chai.request(server)
+                 .post('/api/v1/jobApplied')
+                 .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
+     			.set('content-type','multipart/form-data')
+     			.send({
+                     jobId:'8',     
+           })
+           .attach({"fileName": 'E:\Misc\What Are Project Objectives.docx'}) 
+     			.end((err,res) =>{
     
-//               res.body.should.have.status('200')
+              res.body.should.have.status('200')
               
-//      				done();
-//      			})
-//      		})
-//        })
+     				done();
+     			})
+     		})
+       })
        
 /** Sprint 5 test */
 //company can view job applicants
@@ -352,6 +352,7 @@ describe("GET /api/v1/jobApplied/:jobId",()=>{
   })
 })
 })
+
 
 
      

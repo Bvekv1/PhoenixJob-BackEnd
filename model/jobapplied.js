@@ -7,6 +7,10 @@ var jobApplied = db.sequelize.define('jobAppliedTable',{
         primaryKey:true,
         autoIncrement:true,
         allowNull:false
+    },
+    resume:{
+        type:db.Sequelize.TEXT,
+        allowNull:true
     }
 },
 {
