@@ -12,7 +12,10 @@ app.use(bodyParser.json());
 const userController = require('./controllers/userController');
 const authValidatorController = require('./controllers/authValidatorController');
 const jobController = require('./controllers/jobController.js');
+const resumeController = require('./controllers/resumeUploadController.js');
 const jobAppliedController = require('./controllers/jobAppliedController');
+
+app.use(express.static(__dirname + "/uploads"));
 
 // authentication API |*****************************************************************************
 app.post('/api/v1/users',authValidatorController.registerValidator,userController.register);
@@ -33,10 +36,14 @@ app.get('/api/v1/jobByUserId', authValidatorController.verifyToken, jobControlle
 app.delete('/api/v1/job/:jobId', authValidatorController.verifyToken, jobController.deleteJob);
 
 //job Applied API **********************************************************************************
-app.post('/api/v1/jobApplied', authValidatorController.verifyToken,jobAppliedController.jobAppliedByUsers);
+app.post('/api/v1/jobApplied', authValidatorController.verifyToken,resumeController.file, resumeController.files,jobAppliedController.jobAppliedByUsers);
 app.get('/api/v1/jobApplied', authValidatorController.verifyToken,jobAppliedController.getAppliedJobsByUserId);
 app.delete('/api/v1/jobApplied/:jobId', authValidatorController.verifyToken,jobAppliedController.deleteAppliedJob);
 app.get('/api/v1/jobApplied/:jobId', authValidatorController.verifyToken,jobAppliedController.getJobApplicants);
+
+//resume APIS **************************************************************************************
+
+// app.post('/api/v1/resume', resumeController.file, resumeController.files);
 
 //port define **************************************************************************************
 app.listen('4000');

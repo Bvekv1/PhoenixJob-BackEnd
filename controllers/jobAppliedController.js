@@ -3,12 +3,14 @@ var jobModel = require('../model/job');
 var userModel = require('../model/user');
 
 function jobAppliedByUsers(req,res,next){
+    console.log(req.file);
     if(req.body.jobId == null || req.body.jobId == undefined){
         res.status(404);
         res.json({status:'404',message:'Please provide job Id'});
     }
     else{
         jobAppliedModel.jobApplied.create({
+            resume : req.file.filename,
             userId : req.userId,
             jobJobId : req.body.jobId
         })
