@@ -229,47 +229,47 @@ const { response } = require('express');
 /** Sprint 4 test */
 /** Test the delete route for job information */
 /**job delete test with job id that exist */
-describe("Delete /api/v1/job/:jobId",()=>{
-    it("It should delete an existing task",(done)=>{
-        const jobId = 8;
-        request(server)
-        .delete("/api/v1/job/" + jobId)
-        .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
-        .end((err,response)=>{
-            response.should.have.status(200);
-            response.body.should.have.property('message').equal('job is successfully delete');
-            done();
-        });
-    });
-    /**job delete test with job id which does not exist */
-    it("It should not delete a job that is not in the database",(done)=>{
-        const jobId = 5000;
-        request(server)
-        .delete("/api/v1/job/" + jobId)
-        .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
-        .end((err,response) =>{
-            response.should.have.status(404);
-            response.body.should.have.property('message').equal('The job with provided id doesn`t exist.');
-            done();
-        });
-    });
-});
+// describe("Delete /api/v1/job/:jobId",()=>{
+//     it("It should delete an existing task",(done)=>{
+//         const jobId = 2;
+//         request(server)
+//         .delete("/api/v1/job/" + jobId)
+//         .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
+//         .end((err,response)=>{
+//             response.should.have.status(200);
+//             response.body.should.have.property('message').equal('job is successfully delete');
+//             done();
+//         });
+//     });
+//     /**job delete test with job id which does not exist */
+//     it("It should not delete a job that is not in the database",(done)=>{
+//         const jobId = 5000;
+//         request(server)
+//         .delete("/api/v1/job/" + jobId)
+//         .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
+//         .end((err,response) =>{
+//             response.should.have.status(404);
+//             response.body.should.have.property('message').equal('The job with provided id doesn`t exist.');
+//             done();
+//         });
+//     });
+// });
 
 
 /**Test the select route for job applied */
-describe("Get /api/v1/apply/",() =>{
-   it ("It should Get a job by job applied  by user id",(done) =>{
+// describe("Get /api/v1/apply/",() =>{
+//    it ("It should Get a job by job applied  by user id",(done) =>{
         
-        request(server)
-        .get("/api/v1/JobApplied")
-       .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
-        .end((err,response) =>{
-            response.should.have.status(200);
+//         request(server)
+//         .get("/api/v1/JobApplied")
+//        .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
+//         .end((err,response) =>{
+//             response.should.have.status(200);
             
-            done();
-        });
-    });
-});
+//             done();
+//         });
+//     });
+// });
 
 
 
@@ -287,51 +287,71 @@ describe("Get /api/v1/apply/",() =>{
 //   });
 
 /** Test the delete route for job applied application */
- describe("Delete /api/v1/job/:jobId",()=>{
-        it("It should delete an existing jobApplication",(done)=>{
-            const jobId = 2;
-            request(server)
-            .delete("/api/v1/jobApplied/" + jobId)
-            .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
-           .end((err,response)=>{
-                response.should.have.status(200);
-                response.body.should.have.property('message').equal('applied job successfully deleted');
-               done();
-            });
-        });
-        /**test the delete for if the job id doesn`t exist */
-      it("It should not delete a job application that is not in the database",(done)=>{
-          const jobId = 25;
-          request(server)
-          .delete("/api/v1/jobApplied/" + jobId)
-          .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
-          .end((err,response) =>{
-              response.should.have.status(404);
-              response.body.should.have.property('message').equal('applied job is failed to delete');
-              done();
-          });
-      });
-  });
+//  describe("Delete /api/v1/job/:jobId",()=>{
+//         it("It should delete an existing jobApplication",(done)=>{
+//             const jobId = 2;
+//             request(server)
+//             .delete("/api/v1/jobApplied/" + jobId)
+//             .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
+//            .end((err,response)=>{
+//                 response.should.have.status(200);
+//                 response.body.should.have.property('message').equal('applied job successfully deleted');
+//                done();
+//             });
+//         });
+//         /**test the delete for if the job id doesn`t exist */
+//       it("It should not delete a job application that is not in the database",(done)=>{
+//           const jobId = 25;
+//           request(server)
+//           .delete("/api/v1/jobApplied/" + jobId)
+//           .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
+//           .end((err,response) =>{
+//               response.should.have.status(404);
+//               response.body.should.have.property('message').equal('applied job is failed to delete');
+//               done();
+//           });
+//       });
+//   });
 
-  describe('POST applied job registration in test',function(){
+//   describe('POST applied job registration in test',function(){
 
-     		it('test the jobapplied route for job aplication',function(done){
+//      		it('test the jobapplied route for job aplication',function(done){
              
-     		chai.request(server)
-                 .post('/api/v1/jobApplied')
-                 .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
-     			.set('content-type','application/x-www-form-urlencoded')
-     			.send({
-                     jobId:'8',
+//      		chai.request(server)
+//                  .post('/api/v1/jobApplied')
+//                  .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
+//      			.set('content-type','application/x-www-form-urlencoded')
+//      			.send({
+//                      jobId:'8',
                      
                     
-     			})
-     			.end((err,res) =>{
+//      			})
+//      			.end((err,res) =>{
     
-              res.body.should.have.status('200')
+//               res.body.should.have.status('200')
               
-     				done();
-     			})
-     		})
-     	})
+//      				done();
+//      			})
+//      		})
+//        })
+       
+/** Sprint 5 test */
+//company can view job applicants
+/** Test the get route for job job applied*/
+/** job applied get test if job applied doesnot exist*/
+
+describe("GET /api/v1/jobApplied/:jobId",()=>{
+  it('test if job applied by user exist',(done)=>{
+    const jobId=2;
+    request(server)
+          .get("/api/v1/JobApplied/" + jobId)
+          .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJUeXBlIjoiMCIsImlhdCI6MTU5NTQwNjcyNn0.M4Aloar4ZRBxEOMIf8dcAIC2w3dpiaTIFbJnpRHb6Xk'})
+          .end((err,response) =>{
+                response.should.have.status(200);
+                done();
+  })
+})
+})
+
+
      
