@@ -11,6 +11,11 @@ var jobApplied = db.sequelize.define('jobAppliedTable',{
     resume:{
         type:db.Sequelize.TEXT,
         allowNull:true
+    },
+    hireStatus:{
+        type:db.Sequelize.BOOLEAN,
+        allowNull:false,
+        defaultValue:false
     }
 },
 {

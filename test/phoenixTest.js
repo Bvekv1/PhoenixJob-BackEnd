@@ -353,6 +353,37 @@ describe("GET /api/v1/jobApplied/:jobId",()=>{
 })
 })
 
+describe("GET function should display all users who applied for job",()=>{
+  it('test if job applied by user exist',(done)=>{
+    const jobId=2;
+    request(server)
+          .get("/api/v1/hire/" + jobId)
+          .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJUeXBlIjoiMCIsImlhdCI6MTU5NTQwNjcyNn0.M4Aloar4ZRBxEOMIf8dcAIC2w3dpiaTIFbJnpRHb6Xk'})
+          .end((err,response) =>{
+                response.should.have.status(200);
+                done();
+  })
+})
+})
+
+describe("PUT changing hire status to hire applicants",()=>{
+  it('test if job applied by user exist',(done)=>{
+    const jobId=2;
+    request(server)
+          .put("/api/v1/hire/" + jobId)
+          .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJUeXBlIjoiMCIsImlhdCI6MTU5NTQwNjcyNn0.M4Aloar4ZRBxEOMIf8dcAIC2w3dpiaTIFbJnpRHb6Xk'})
+          .send({
+            hireStatus: true,
+            userId: 9
+          })
+          .end((err,response) =>{
+                response.should.have.status(200);
+                done();
+  })
+})
+})
+
+
 
 
      
