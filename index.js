@@ -14,8 +14,9 @@ const authValidatorController = require('./controllers/authValidatorController')
 const jobController = require('./controllers/jobController.js');
 const resumeController = require('./controllers/resumeUploadController.js');
 const jobAppliedController = require('./controllers/jobAppliedController');
+const hireApplicantController = require('./controllers/hireApplicantController');
 
-app.use(express.static(__dirname + "/uploads"));
+app.use(express.static(__dirname + "/public"));
 
 // authentication API |*****************************************************************************
 app.post('/api/v1/users',authValidatorController.registerValidator,userController.register);
@@ -41,7 +42,9 @@ app.get('/api/v1/jobApplied', authValidatorController.verifyToken,jobAppliedCont
 app.delete('/api/v1/jobApplied/:jobId', authValidatorController.verifyToken,jobAppliedController.deleteAppliedJob);
 app.get('/api/v1/jobApplied/:jobId', authValidatorController.verifyToken,jobAppliedController.getJobApplicants);
 
-//resume APIS **************************************************************************************
+//hire Applicant APIS **************************************************************************************
+app.get('/api/v1/hire/:jobId',authValidatorController.verifyToken, hireApplicantController.getApplicants);
+app.put('/api/v1/hire/:jobId',authValidatorController.verifyToken, hireApplicantController.hireApplicant);
 
 // app.post('/api/v1/resume', resumeController.file, resumeController.files);
 
