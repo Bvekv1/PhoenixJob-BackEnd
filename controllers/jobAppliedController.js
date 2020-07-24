@@ -93,45 +93,11 @@ function deleteAppliedJob(req,res,next){
     }
 }
 
-function getJobApplicants(req, res, next){
-    if(req.userId === null || undefined){
-        res.status(500);
-        res.json({status:500,message:'user id is not provided'})
-    }
-    else{
-        jobAppliedModel.jobApplied.findAll({
-            where:{
-                jobJobId : req.params.jobId,
-        },
-        include:[{
-            model:userModel.user
-        }]
-    })
-    .then(function(result){
-        if(result !== null){
-            console.log(result);
-            // var data = JSON.parse(result);
-            // console.log(data);
-
-            res.status(200);
-            res.json(result);
-        }
-        else{
-            res.status(404);
-            res.json({message:'applied job not found'});
-        }
-    })
-    .catch(function(err){
-        next(err);
-    })
-    }
-}
 
 
 
 module.exports = {
     jobAppliedByUsers,
     getAppliedJobsByUserId,
-    deleteAppliedJob,
-    getJobApplicants
+    deleteAppliedJob
 }
