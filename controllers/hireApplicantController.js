@@ -31,9 +31,10 @@ function getApplicants(req,res,next){
 }
 
 function hireApplicant(req,res,next){
-    if(req.userType = 0){    
+    if(req.userType === 0){    
         jobAppliedModel.jobApplied.update({
-            hireStatus:req.body.hireStatus
+            hireStatus:req.body.hireStatus,
+            notificationMessage: 'Congratulation you have been hired'
         },{
         where: {
             jobJobId: req.params.jobId,
@@ -41,10 +42,10 @@ function hireApplicant(req,res,next){
         }})
         .then(function(result){
             if (result === 1 ){
-                res.json({status: 404, message: 'User not found for update'})
+                res.json({status: 404, message: 'User could not be hired'})
             }
             else{
-                res.json({status: 200, message: 'User was successfully Updated'})
+                res.json({status: 200, message: 'User hired and sent notification'})
             }
         })
         .catch(function(err){
@@ -52,7 +53,7 @@ function hireApplicant(req,res,next){
             
         })
     }
-    else if(req.userType = 1){
+    else if(req.userType === 1){
         res.json({status: 500, message:'You donot have permission to perform this action.'})
     }
 }
