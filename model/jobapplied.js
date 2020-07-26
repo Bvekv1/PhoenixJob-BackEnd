@@ -16,6 +16,10 @@ var jobApplied = db.sequelize.define('jobAppliedTable',{
         type:db.Sequelize.BOOLEAN,
         allowNull:false,
         defaultValue:false
+    },
+    notificationMessage:{
+        type:db.Sequelize.TEXT,
+        allowNull:true
     }
 },
 {
