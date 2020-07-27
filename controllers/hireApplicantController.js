@@ -31,7 +31,7 @@ function getApplicants(req,res,next){
 }
 
 function hireApplicant(req,res,next){
-    if(req.userType === 0){    
+    if(req.userType === '0'){    
         jobAppliedModel.jobApplied.update({
             hireStatus:req.body.hireStatus,
             notificationMessage: 'Congratulation you have been hired'
@@ -49,11 +49,11 @@ function hireApplicant(req,res,next){
             }
         })
         .catch(function(err){
-            res.json({status: 500, message: 'There was an error updating '})
+            res.json({status: 500, message: 'There was an error hiring '})
             
         })
     }
-    else if(req.userType === 1){
+    else if(req.userType === '1'){
         res.json({status: 500, message:'You donot have permission to perform this action.'})
     }
 }
