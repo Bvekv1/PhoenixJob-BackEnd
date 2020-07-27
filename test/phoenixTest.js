@@ -381,9 +381,21 @@ describe("PUT changing hire status to hire applicants",()=>{
                 done();
   })
 })
+
+describe("GET notifications once the user has been hired",()=>{
+  it('test whether the user gets notifications or not',(done)=>{
+    // const jobId=2;
+    request(server)
+          .get("/api/v1/notification")
+          .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlclR5cGUiOiIxIiwiaWF0IjoxNTk1ODYxNjY3fQ.avxnWObT1NoT9quCPhToRSsBt-lL8G2vpt4DkHRF23g'})
+          .end((err,response) =>{
+                response.should.have.status(200);
+                done();
+  })
+})
 })
 
-
+})
 
 
      
