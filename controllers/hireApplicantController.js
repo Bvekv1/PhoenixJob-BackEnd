@@ -1,6 +1,7 @@
 var jobAppliedModel = require('../model/jobapplied');
 var jobModel = require('../model/job');
 var userModel = require('../model/user');
+const Op = require('sequelize').Op;
 
 function getApplicants(req,res,next){
     console.log(req.userId);
@@ -58,7 +59,32 @@ function hireApplicant(req,res,next){
     }
 }
 
+function getNotification(req,res,result){
+    jobAppliedModel.jobApplied.findAll({
+        where:{
+            userId: req.userId,
+            notificationMessage: {
+                [Op.ne]: null
+            }
+        }
+    }).then(function(result){
+        if(result !== null){
+            console.log(result);
+            // var data = JSON.parse(result);
+            // console.log(data);
+
+            res.status(200);
+            res.json(result);
+        }
+        else{
+            res.status(404);
+            res.json({message:'Error'});
+        }
+    })
+}
+
 module.exports={
     getApplicants,
+    getNotification,
     hireApplicant
 }

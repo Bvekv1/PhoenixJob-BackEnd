@@ -45,6 +45,7 @@ app.delete('/api/v1/jobApplied/:jobId', authValidatorController.verifyToken,jobA
 app.get('/api/v1/hire/:jobId',authValidatorController.verifyToken, hireApplicantController.getApplicants);
 app.put('/api/v1/hire/:jobId',authValidatorController.verifyToken, hireApplicantController.hireApplicant);
 
+app.get('/api/v1/notification',authValidatorController.verifyToken, hireApplicantController.getNotification);
 // app.post('/api/v1/resume', resumeController.file, resumeController.files);
 
 //port define **************************************************************************************
