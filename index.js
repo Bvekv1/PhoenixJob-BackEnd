@@ -15,6 +15,7 @@ const jobController = require('./controllers/jobController.js');
 const resumeController = require('./controllers/resumeUploadController.js');
 const jobAppliedController = require('./controllers/jobAppliedController');
 const hireApplicantController = require('./controllers/hireApplicantController');
+const emailController = require('./controllers/emailController');
 
 app.use(express.static(__dirname + "/public"));
 
@@ -47,6 +48,8 @@ app.put('/api/v1/hire/:jobId',authValidatorController.verifyToken, hireApplicant
 
 app.get('/api/v1/notification',authValidatorController.verifyToken, hireApplicantController.getNotification);
 // app.post('/api/v1/resume', resumeController.file, resumeController.files);
+
+app.post('/api/v1/nodeMail',emailController.contact);
 
 //port define **************************************************************************************
 app.listen('4000');
