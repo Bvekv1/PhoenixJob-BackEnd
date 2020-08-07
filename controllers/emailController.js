@@ -10,7 +10,7 @@ exports.contact = function(req,res){
  var transporter = nodemailer.createTransport({
      host: "smtp.gmail.com",
     port: 465,
-    secure: true, 
+    secure: false, 
       logger: true,
       debug: true,
       ignoreTLS: true, 

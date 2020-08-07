@@ -397,5 +397,26 @@ describe("GET notifications once the user has been hired",()=>{
 
 })
 
+/** Sprint 6 test */
+//user can view job email
+
+describe("Post /api/v1/nodeMail",()=>{
+  it('test if email is send',(done)=>{
+    request(server)
+          .post("/api/v1/nodeMail")
+          .set('content-type','application/x-www-form-urlencoded')
+          .send({
+            "name":"Phoenix job",
+            "from":"manish@gmail.com",
+            "message":"you have been hired by company",
+            "email": "manishngk99@gmail.com"
+          })
+          .end((err,response) =>{
+                response.should.have.status(200);
+                done();
+  })
+})
+})
+
 
      
