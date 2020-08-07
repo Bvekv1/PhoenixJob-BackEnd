@@ -335,7 +335,7 @@ const { response } = require('express');
      		})
        })
        
-/** Sprint 5 test */
+/** Sprint 5 test ****************************************************/
 //company can view job applicants
 /** Test the get route for job job applied*/
 /** job applied get test if job applied doesnot exist*/
@@ -353,6 +353,8 @@ describe("GET /api/v1/jobApplied/:jobId",()=>{
 })
 })
 
+// Company can view the job applicants
+
 describe("GET function should display all users who applied for job",()=>{
   it('test if job applied by user exist',(done)=>{
     const jobId=2;
@@ -365,6 +367,8 @@ describe("GET function should display all users who applied for job",()=>{
   })
 })
 })
+
+//Hire The Applicant
 
 describe("PUT changing hire status to hire applicants",()=>{
   it('test if job applied by user exist',(done)=>{
@@ -382,6 +386,8 @@ describe("PUT changing hire status to hire applicants",()=>{
   })
 })
 
+// User can view the notification of job status
+
 describe("GET notifications once the user has been hired",()=>{
   it('test whether the user gets notifications or not',(done)=>{
     // const jobId=2;
@@ -397,10 +403,10 @@ describe("GET notifications once the user has been hired",()=>{
 
 })
 
-/** Sprint 6 test */
+/** Sprint 6 test **************************/
 //user can view job email
 
-describe("Post /api/v1/nodeMail",()=>{
+describe("POST job email",()=>{
   it('test if email is send',(done)=>{
     request(server)
           .post("/api/v1/nodeMail")
@@ -417,6 +423,23 @@ describe("Post /api/v1/nodeMail",()=>{
   })
 })
 })
+
+//User (job Seeker) can view job status
+
+describe("GET to view job status",()=>{
+  it('test to view job status',(done)=>{
+    const jobId=2;
+    request(server)
+    .get("/api/v1/hire/" + jobId)
+    .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJUeXBlIjoiMCIsImlhdCI6MTU5NTQwNjcyNn0.M4Aloar4ZRBxEOMIf8dcAIC2w3dpiaTIFbJnpRHb6Xk'})
+    .end((err,response) =>{
+          response.should.have.status(200);
+          done();
+  })
+})
+})
+
+
 
 
      
