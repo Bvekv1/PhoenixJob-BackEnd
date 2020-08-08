@@ -314,109 +314,113 @@ const { response } = require('express');
 //       });
 //   });
 
-  describe('POST applied job registration in test',function(){
+  // describe('POST applied job registration in test',function(){
 
-     		it('test the jobapplied route for job aplication',function(done){
+  //    		it('test the jobapplied route for job aplication',function(done){
              
-     		chai.request(server)
-                 .post('/api/v1/jobApplied')
-                 .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
-     			.set('content-type','multipart/form-data')
-     			.send({
-                     jobId:'8',     
-           })
-           .attach({"fileName": 'E:\Misc\What Are Project Objectives.docx'}) 
-     			.end((err,res) =>{
+  //    		chai.request(server)
+  //                .post('/api/v1/jobApplied')
+  //                .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlclR5cGUiOiIwIiwiaWF0IjoxNTk0ODgwOTEwfQ.RnioBwFB6jCXpr2tvpq7NgvTanoRk_bkWcGLuLwyY80'})
+  //    			.set('content-type','multipart/form-data')
+  //    			.send({
+  //                    jobId:'8',     
+  //          })
+  //          .attach({"fileName": 'E:\Misc\What Are Project Objectives.docx'}) 
+  //    			.end((err,res) =>{
     
-              res.body.should.have.status('200')
+  //             res.body.should.have.status('200')
               
-     				done();
-     			})
-     		})
-       })
+  //    				done();
+  //    			})
+  //    		})
+  //      })
        
 /** Sprint 5 test ****************************************************/
 //company can view job applicants
 /** Test the get route for job job applied*/
 /** job applied get test if job applied doesnot exist*/
 
-describe("GET /api/v1/jobApplied/:jobId",()=>{
-  it('test if job applied by user exist',(done)=>{
-    const jobId=2;
-    request(server)
-          .get("/api/v1/JobApplied/" + jobId)
-          .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJUeXBlIjoiMCIsImlhdCI6MTU5NTQwNjcyNn0.M4Aloar4ZRBxEOMIf8dcAIC2w3dpiaTIFbJnpRHb6Xk'})
-          .end((err,response) =>{
-                response.should.have.status(200);
-                done();
-  })
-})
-})
+// describe("GET /api/v1/jobApplied/:jobId",()=>{
+//   it('test if job applied by user exist',(done)=>{
+//     const jobId=2;
+//     request(server)
+//           .get("/api/v1/JobApplied/" + jobId)
+//           .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJUeXBlIjoiMCIsImlhdCI6MTU5NTQwNjcyNn0.M4Aloar4ZRBxEOMIf8dcAIC2w3dpiaTIFbJnpRHb6Xk'})
+//           .end((err,response) =>{
+//                 response.should.have.status(200);
+//                 done();
+//   })
+// })
+// })
 
 // Company can view the job applicants
 
-describe("GET function should display all users who applied for job",()=>{
-  it('test if job applied by user exist',(done)=>{
-    const jobId=2;
-    request(server)
-          .get("/api/v1/hire/" + jobId)
-          .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJUeXBlIjoiMCIsImlhdCI6MTU5NTQwNjcyNn0.M4Aloar4ZRBxEOMIf8dcAIC2w3dpiaTIFbJnpRHb6Xk'})
-          .end((err,response) =>{
-                response.should.have.status(200);
-                done();
-  })
-})
-})
+// describe("GET function should display all users who applied for job",()=>{
+//   it('test if job applied by user exist',(done)=>{
+//     const jobId=2;
+//     request(server)
+//           .get("/api/v1/hire/" + jobId)
+//           .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJUeXBlIjoiMCIsImlhdCI6MTU5NTQwNjcyNn0.M4Aloar4ZRBxEOMIf8dcAIC2w3dpiaTIFbJnpRHb6Xk'})
+//           .end((err,response) =>{
+//                 response.should.have.status(200);
+//                 done();
+//   })
+// })
+// })
 
 //Hire The Applicant
 
-describe("PUT changing hire status to hire applicants",()=>{
-  it('test if job applied by user exist',(done)=>{
-    const jobId=2;
-    request(server)
-          .put("/api/v1/hire/" + jobId)
-          .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJUeXBlIjoiMCIsImlhdCI6MTU5NTQwNjcyNn0.M4Aloar4ZRBxEOMIf8dcAIC2w3dpiaTIFbJnpRHb6Xk'})
-          .send({
-            hireStatus: true,
-            userId: 9
-          })
-          .end((err,response) =>{
-                response.should.have.status(200);
-                done();
-  })
-})
+// describe("PUT changing hire status to hire applicants",()=>{
+//   it('test if job applied by user exist',(done)=>{
+//     const jobId=2;
+//     request(server)
+//           .put("/api/v1/hire/" + jobId)
+//           .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJUeXBlIjoiMCIsImlhdCI6MTU5NTQwNjcyNn0.M4Aloar4ZRBxEOMIf8dcAIC2w3dpiaTIFbJnpRHb6Xk'})
+//           .send({
+//             hireStatus: true,
+//             userId: 9
+//           })
+//           .end((err,response) =>{
+//                 response.should.have.status(200);
+//                 done();
+//   })
+// })
 
 // User can view the notification of job status
 
-describe("GET notifications once the user has been hired",()=>{
-  it('test whether the user gets notifications or not',(done)=>{
-    // const jobId=2;
-    request(server)
-          .get("/api/v1/notification")
-          .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlclR5cGUiOiIxIiwiaWF0IjoxNTk1ODYxNjY3fQ.avxnWObT1NoT9quCPhToRSsBt-lL8G2vpt4DkHRF23g'})
-          .end((err,response) =>{
-                response.should.have.status(200);
-                done();
-  })
-})
-})
+// describe("GET notifications once the user has been hired",()=>{
+//   it('test whether the user gets notifications or not',(done)=>{
+//     // const jobId=2;
+//     request(server)
+//           .get("/api/v1/notification")
+//           .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlclR5cGUiOiIxIiwiaWF0IjoxNTk1ODYxNjY3fQ.avxnWObT1NoT9quCPhToRSsBt-lL8G2vpt4DkHRF23g'})
+//           .end((err,response) =>{
+//                 response.should.have.status(200);
+//                 done();
+//   })
+// })
+// })
 
-})
+// })
 
 /** Sprint 6 test **************************/
 //user can view job email
 
+
+
 describe("POST job email",()=>{
   it('test if email is send',(done)=>{
+    const user={
+      name: "Phoenix job",
+      from: "phoenixjob89@gmail.com", 
+      message: "you have been hired by company",
+      email: "manishngk99@gmail.com",
+    }
+    
     request(server)
           .post("/api/v1/nodeMail")
           .set('content-type','application/x-www-form-urlencoded')
-          .send({
-            "name":"Phoenix job",
-            "from":"manish@gmail.com",
-            "message":"you have been hired by company",
-            "email": "manishngk99@gmail.com"
-          })
+          .send(user)
           .end((err,response) =>{
                 response.should.have.status(200);
                 done();
@@ -430,7 +434,7 @@ describe("GET to view job status",()=>{
   it('test to view job status',(done)=>{
     const jobId=2;
     request(server)
-    .get("/api/v1/hire/" + jobId)
+    .get("/api/v1/jobStatus/" + jobId)
     .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJUeXBlIjoiMCIsImlhdCI6MTU5NTQwNjcyNn0.M4Aloar4ZRBxEOMIf8dcAIC2w3dpiaTIFbJnpRHb6Xk'})
     .end((err,response) =>{
           response.should.have.status(200);
@@ -438,6 +442,24 @@ describe("GET to view job status",()=>{
   })
 })
 })
+
+
+//User (company) can view applicant status
+
+describe("GET to view applicant status",()=>{
+  it('test to view applicant status',(done)=>{
+    const userId=2;
+    request(server)
+    .get("/api/v1/applicantStatus/" + userId)
+    .set({"Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInVzZXJUeXBlIjoiMCIsImlhdCI6MTU5NTQwNjcyNn0.M4Aloar4ZRBxEOMIf8dcAIC2w3dpiaTIFbJnpRHb6Xk'})
+    .end((err,response) =>{
+          response.should.have.status(200);
+          done();
+  })
+})
+})
+
+
 
 
 
