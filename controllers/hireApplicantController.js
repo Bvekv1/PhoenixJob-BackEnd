@@ -34,7 +34,7 @@ function getApplicants(req,res,next){
 function hireApplicant(req,res,next){
     if(req.userType === '0'){    
         jobAppliedModel.jobApplied.update({
-            hireStatus:req.body.hireStatus,
+            hireStatus: '1',
             notificationMessage: 'Congratulation you have been hired'
         },{
         where: {
@@ -83,8 +83,41 @@ function getNotification(req,res,result){
     })
 }
 
+function jobStatus(req,res,next){
+    // console.log(req.params.jobId);
+    if(req.userType === '0'){
+        jobModel.job.update({
+            jobStatus: 1
+            
+        }, {
+            where: {
+                jobId: req.params.jobId
+            }})
+            .then(function(result){
+                // console.log(result);
+                if (result === 1 ){
+                    res.json({status: 404, message: 'job status not available'})
+                }
+                else {
+                    next();
+                }
+               
+            })
+
+            .catch(function(err){
+                res.json({status: 500, message: 'There was an error hiring '})
+                
+            })     
+    }
+    else if(req.userType === '1'){
+        res.json({status: 500, message:'You donot have permission to perform this action.'})
+    }
+
+}
+
 module.exports={
     getApplicants,
     getNotification,
-    hireApplicant
+    hireApplicant,
+    jobStatus
 }
