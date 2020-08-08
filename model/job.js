@@ -28,6 +28,11 @@ var job = db.sequelize.define('job',{
         type:db.Sequelize.TEXT,
         allowNull:false
     },
+    jobStatus:{
+        type:db.Sequelize.TINYINT,
+        alloNull:false,
+        defaultValue: 0
+    },
     salary:{
         type:db.Sequelize.TEXT,
         alloNull:false
