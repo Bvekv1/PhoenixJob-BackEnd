@@ -38,7 +38,7 @@ app.get('/api/v1/jobByUserId', authValidatorController.verifyToken, jobControlle
 app.delete('/api/v1/job/:jobId', authValidatorController.verifyToken, jobController.deleteJob);
 
 //job Applied API **********************************************************************************
-app.post('/api/v1/jobApplied', authValidatorController.verifyToken,resumeController.file, resumeController.files,jobAppliedController.jobAppliedByUsers);
+app.post('/api/v1/jobApplied', authValidatorController.verifyToken, jobAppliedController.jobAppliedByUsers);
 app.get('/api/v1/jobApplied', authValidatorController.verifyToken,jobAppliedController.getAppliedJobsByUserId);
 app.delete('/api/v1/jobApplied/:jobId', authValidatorController.verifyToken,jobAppliedController.deleteAppliedJob);
 
@@ -47,7 +47,7 @@ app.get('/api/v1/hire/:jobId',authValidatorController.verifyToken, hireApplicant
 app.put('/api/v1/hire/:jobId',authValidatorController.verifyToken, hireApplicantController.hireApplicant);
 
 app.get('/api/v1/notification',authValidatorController.verifyToken, hireApplicantController.getNotification);
-// app.post('/api/v1/resume', resumeController.file, resumeController.files);
+app.post('/api/v1/resume', resumeController.file, resumeController.files);
 
 app.post('/api/v1/nodeMail',emailController.contact);
 
