@@ -26,13 +26,13 @@ var user = db.sequelize.define('user',{
         allowNull:false
     },
     userType:{
-        type:db.Sequelize.TEXT,
-        allowNull:true
+        type: db.Sequelize.TINYINT,
+        allowNull: false,
+        defaultValue : 1
     },
      companyName: {
         type:db.Sequelize.TEXT,
         allowNull:true
-        
     },
      organizationType: {
         type:db.Sequelize.TEXT,

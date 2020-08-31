@@ -51,7 +51,7 @@ function displayJob(req,res,next) {
 function displayAllJob(req,res,next) {
     job.job.findAll()
     .then(function (result) {
-        console.log(result);
+        // console.log(result);
         if(result === 0){
             res.json({
                 status:'200',
