@@ -32,7 +32,7 @@ function verifyToken(req,res,next){
     var token = req.headers.authorization.slice(7,req.headers.authorization.length);
     // console.log(token);
     jwt.verify(token,'thisisSecretKey',function(err,result){
-        console.log(err);
+        // console.log(err);
         console.log(result);
         req.userId= result.id;
         req.userType = result.userType;       

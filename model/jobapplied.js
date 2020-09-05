@@ -13,9 +13,10 @@ var jobApplied = db.sequelize.define('jobAppliedTable',{
         allowNull:true
     },
     hireStatus:{
-        type:db.Sequelize.TINYINT,
-        allowNull:false,
-        defaultValue:0
+        type: db.Sequelize.TINYINT,
+        allowNull: false,
+        defaultValue : 0
+
     },
     notificationMessage:{
         type:db.Sequelize.TEXT,

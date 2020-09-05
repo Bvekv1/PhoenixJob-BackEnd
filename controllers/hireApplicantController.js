@@ -8,7 +8,8 @@ function getApplicants(req,res,next){
     console.log(req.params.jobId)
     jobAppliedModel.jobApplied.findAll({
         where: {
-            jobJobId: req.params.jobId
+            jobJobId: req.params.jobId,
+            hireStatus: 0
         },include:[{
             model: userModel.user
         }]
@@ -32,7 +33,8 @@ function getApplicants(req,res,next){
 }
 
 function hireApplicant(req,res,next){
-    if(req.userType === '0'){    
+    console.log(req.userType);
+    if(req.userType == 0){
         jobAppliedModel.jobApplied.update({
             hireStatus: '1',
             notificationMessage: 'Congratulation you have been hired'
@@ -51,6 +53,34 @@ function hireApplicant(req,res,next){
         })
         .catch(function(err){
             res.json({status: 500, message: 'There was an error hiring '})
+            
+        })
+    }
+    else if(req.userType === '1'){
+        res.json({status: 500, message:'You donot have permission to perform this action.'})
+    }
+}
+
+function rejectApplicant(req,res,next){
+    if(req.userType == 0){    
+        jobAppliedModel.jobApplied.update({
+            hireStatus:req.body.hireStatus,
+            notificationMessage: 'Sorry you have been rejected'
+        },{
+        where: {
+            jobJobId: req.params.jobId,
+            userId: req.body.userId
+        }})
+        .then(function(result){
+            if (result === 1 ){
+                res.json({status: 404, message: 'User could not be rejected'})
+            }
+            else{
+                res.json({status: 200, message: 'User rejected and sent notification'})
+            }
+        })
+        .catch(function(err){
+            res.json({status: 500, message: 'There was an error rejecting '})
             
         })
     }
@@ -119,5 +149,7 @@ module.exports={
     getApplicants,
     getNotification,
     hireApplicant,
+    rejectApplicant,
     jobStatus
+
 }

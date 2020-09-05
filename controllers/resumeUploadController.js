@@ -25,7 +25,7 @@ var file = upload.single('fileName');
 
 function files(req,res,next){
     console.log(req.file)
-    // res.json(req.file)
+    res.json(req.file)
     next()
 }
 
