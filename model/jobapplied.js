@@ -16,6 +16,7 @@ var jobApplied = db.sequelize.define('jobAppliedTable',{
         type: db.Sequelize.TINYINT,
         allowNull: false,
         defaultValue : 0
+
     },
     notificationMessage:{
         type:db.Sequelize.TEXT,
