@@ -22,6 +22,7 @@ function postJob(req,res,next) {
         userId:req.userId
         
     }).then((user)=>{
+        console.log(user)
         res.json({
             status: "200",
             message:"sucess"
