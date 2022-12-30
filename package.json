@@ -22,7 +22,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "cucumber": "^6.0.5",
-    "mocha": "^8.1.0",
+    "mocha": "^8.4.0",
     "supertest": "^4.0.2"
   },
   "scripts": {
